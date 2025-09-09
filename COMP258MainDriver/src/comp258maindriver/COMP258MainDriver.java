@@ -19,7 +19,7 @@ public class COMP258MainDriver {
     }
 
     public static void madeInBranch() {
-        System.out.println("Thi code was changed in a branch");
+        System.out.println("This code was changed in a branch");
     }
 
 }
