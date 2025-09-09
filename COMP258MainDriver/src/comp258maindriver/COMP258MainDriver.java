@@ -15,6 +15,11 @@ public class COMP258MainDriver {
      */
     public static void main(String[] args) {
         // TODO code application logic here added comment
+        madeInBranch();
     }
-    
+
+    public static void madeInBranch() {
+        System.out.println("Thi code was changed in a branch");
+    }
+
 }
