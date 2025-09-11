@@ -15,6 +15,11 @@ public class COMP258MainDriver {
      */
     public static void main(String[] args) {
         // TODO code application logic here added comment
+        madeInTrunk();
     }
-    
+
+    public static void madeInTrunk() {
+        System.out.println("This code was made in the main Branch");
+    }
+
 }
