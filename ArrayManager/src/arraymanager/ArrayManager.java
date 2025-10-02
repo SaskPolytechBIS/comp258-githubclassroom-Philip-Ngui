@@ -59,20 +59,12 @@ public class ArrayManager {
     }
 
     //returns the element at the specified index
-    public int get(int i) {
+    public int get(int i) throws NoItemsException {
 
-        int result;
-        //check the element at the specified index
-
-        if (i < size) {
-            result = items[i];
-        } else {
-            System.out.println("There is no item at position: " + i);
-            result = -1;
+        if (i >= size || i < 0) {
+            throw new NoItemsException("Could not get data. Index " + i + " is out of bounds for an array manager of size " + size);
         }
-
-        return result;
-
+        return items[i];
     }
 
     //replaces the data array with a new, larger array that has all the same information in it
@@ -128,30 +120,18 @@ public class ArrayManager {
         ArrayManager am = new ArrayManager();
 
         System.out.println("Adding an item into the array");
-        am.add(111);
-        am.add(222);
-        am.add(333);
-        am.add(444);
-        am.add(555);
-        am.add(666);
-        am.add(777);
-        am.add(888);
-        am.add(999);
-        am.add(101010);
-        am.add(111111);
-        System.out.println("Printing new item");
-        am.printArray();
-        System.out.println("Testing Remove");
-        am.remove(3);
-        System.out.println("Printing all items");
+        am.add(1);
+        am.add(2);
+        am.add(3);
+
         am.printArray();
 
-        if (am.isEmpty()) {
-            System.out.println("The array is empty");
-        } else {
-            System.out.println("Array is not empty");
+        try {
+            System.out.println("The item at position 1000 is " + am.get(-9));
+
+        } catch (NoItemsException noe) {
+            noe.printStackTrace();
         }
-
     }
 
 }
