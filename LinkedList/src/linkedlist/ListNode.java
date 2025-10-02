@@ -1,0 +1,28 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package linkedlist;
+
+/**
+ *
+ * @author Philip Ngui
+ */
+public class ListNode {
+
+    private Object data;
+    public ListNode next;
+
+    public ListNode(Object data) {
+        this.data = data;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+}
