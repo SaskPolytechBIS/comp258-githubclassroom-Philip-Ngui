@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package linkedlist;
 
 /**
@@ -10,90 +6,75 @@ package linkedlist;
  */
 public class LinkedList {
 
-    private ListNode items; //Contains the first node in the list
-    private ListNode current; //The node of the list that is currently selected 
-    private int size; //contains the number of items in the linked list
+    private ListNode items; // Contains the first node in the list
+    private ListNode current; // The node of the list that is currently selected 
+    private int size; // Contains the number of items in the linked list
 
     public int getSize() {
         return size;
     }
 
-    //sets current to the first item in the list
+    // Sets current to the first item in the list
     public void start() {
         current = items;
     }
 
-    //advances current to the next item in the list
+    // Advances current to the next item in the list
     public void advance() {
         if (current != null && current.next != null) {
-            //advance current
             current = current.next;
         } else {
             System.out.println("There is no next item to advance current to");
         }
     }
 
-    //return data that is in the current node
-    public Object getCurrent() {
-
+    // Return data that is in the current node
+    public Comparable getCurrent() {
         return current.getData();
     }
 
-    // add a new node at the end of the list with nodeData as its data
-    public void add(Object nodeData) {
+    // Add a new node at the end of the list
+    public void add(Comparable nodeData) {
         ListNode newNode = new ListNode(nodeData);
 
-        //add newNode as the first item in the list
         if (size == 0) {
             items = newNode;
             current = newNode;
         } else {
-            //link the new node to the end of the list
             current.next = newNode;
             current = newNode;
-
         }
 
-        //Increase the size of the list
         size++;
     }
 
-    //inserts an item into the list after current
-    public void addAfter(Object nodeData) {
+    // Add a new node after the current node
+    public void addAfter(Comparable nodeData) {
         ListNode newNode = new ListNode(nodeData);
 
         if (size == 0) {
-            // If list is empty, just make this the first node
             items = newNode;
             current = newNode;
         } else {
-            //save nextNode so it doesn’t get lost
-            ListNode nextNode = current.next;
-
-            //link the new node after current
-            current.next = newNode;
+            ListNode nextNode = current == null ? null : current.next;
+            if (current != null) {
+                current.next = newNode;
+            }
             newNode.next = nextNode;
-
-            //move current to the new node
             current = newNode;
         }
 
-        //Increase the size of the list
         size++;
     }
 
-    // print all items in the list
+    // Print all items in the list
     public void printList() {
-
-        //check if the list is empty
         if (size == 0) {
             System.out.println("The list is empty.");
             return;
         }
 
-        //loop through all items
         ListNode parser = items;
-
         System.out.println("Printing all items in the list:");
         while (parser != null) {
             System.out.println(parser.getData());
@@ -101,29 +82,27 @@ public class LinkedList {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // Main method for testing
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        //add data using add()
-        ll.add("a");
-        ll.add("b");
-        ll.add("c");
-        ll.add("d");
-        ll.add("e");
+        Widget w1 = new Widget(1001, "Screw", 900);
+        Widget w2 = new Widget(1002, "Bolt", 300);
+        Widget w3 = new Widget(1003, "Cat", 9);
 
-        System.out.println("Printing initial list:");
+        ll.addAfter(w1);
+        ll.addAfter(w2);
+        ll.addAfter(w3);
+
         ll.printList();
+        ll.start();
 
-        ll.start(); // move to 'a'
-        ll.advance(); // move to 'b'
-        ll.addAfter(1);
-        ll.addAfter(2);
-        ll.addAfter(3);
-
-        System.out.println("Printing list");
-        ll.printList();
+        if (w2.compareTo(w1) > 0) {
+            System.out.println(w2 + " is larger than " + w1);
+        } else if (w2.compareTo(w1) == 0) {
+            System.out.println(w2 + " is equal to " + w1);
+        } else {
+            System.out.println(w2 + " is smaller than " + w1);
+        }
     }
 }

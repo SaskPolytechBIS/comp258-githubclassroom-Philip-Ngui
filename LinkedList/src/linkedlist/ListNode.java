@@ -10,18 +10,18 @@ package linkedlist;
  */
 public class ListNode {
 
-    private Object data;
+    private Comparable data;
     public ListNode next;
 
-    public ListNode(Object data) {
+    public ListNode(Comparable data) {
         this.data = data;
     }
 
-    public Object getData() {
+    public Comparable getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(Comparable data) {
         this.data = data;
     }
 
