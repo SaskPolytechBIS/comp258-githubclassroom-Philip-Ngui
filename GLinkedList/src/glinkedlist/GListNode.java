@@ -8,7 +8,7 @@ package glinkedlist;
  *
  * @author Philip Ngui
  */
-public class GListNode<T> {
+public class GListNode<T extends Comparable> {
 
     private T data;
     public GListNode<T> next;
