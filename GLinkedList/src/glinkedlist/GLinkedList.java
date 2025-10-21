@@ -135,7 +135,7 @@ public class GLinkedList<T extends Comparable> {
         }
     }
 
-    public void addBefore(Object nodeData) {
+    public void addBefore(Comparable nodeData) {
         //create a new node
         GListNode newNode = new GListNode(nodeData);
         //is current the first item in the list
