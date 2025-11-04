@@ -12,13 +12,29 @@ public class Widget implements Comparable<Widget> {
         this.amount = amount;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public int getAmount() { return amount; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setAmount(int amount) { this.amount = amount; }
+    public String getName() {
+        return name;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -30,13 +46,12 @@ public class Widget implements Comparable<Widget> {
 
     @Override
     public int compareTo(Widget other) {
-        if (this.id > other.id) return 1;
-        else if (this.id < other.id) return -1;
-        else return 0;
+        return Integer.compare(this.amount, other.amount);
     }
 
     @Override
     public String toString() {
         return "Widget#" + id + ": " + name + " (" + amount + ")";
     }
+
 }

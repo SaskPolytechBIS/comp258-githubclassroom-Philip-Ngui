@@ -105,4 +105,43 @@ public class LinkedList {
             System.out.println(w2 + " is smaller than " + w1);
         }
     }
+        // Add these methods to your existing LinkedList class:
+    
+    // Recursive print forwards method
+    public void printListForwards() {
+        if (size == 0) {
+            System.out.println("The list is empty.");
+            return;
+        }
+        System.out.println("Printing list forwards (recursive):");
+        printListForwardsRecursive(items);
+    }
+    
+    private void printListForwardsRecursive(ListNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.getData());
+        printListForwardsRecursive(node.next);
+    }
+    
+    // Recursive print backwards method
+    public void printListBackwards() {
+        if (size == 0) {
+            System.out.println("The list is empty.");
+            return;
+        }
+        System.out.println("Printing list backwards (recursive):");
+        printListBackwardsRecursive(items);
+        System.out.println(); // New line for better formatting
+    }
+    
+    private void printListBackwardsRecursive(ListNode node) {
+        if (node == null) {
+            return;
+        }
+        // First go to the end, then print on the way back
+        printListBackwardsRecursive(node.next);
+        System.out.println(node.getData());
+    }
 }
