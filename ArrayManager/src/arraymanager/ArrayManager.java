@@ -10,108 +10,134 @@ package arraymanager;
  */
 public class ArrayManager {
 
-    private int[] items; // array storing the data
-    private int size;    // number of items currently held in the array
+    //The array that will be storing the actual data
+    private int[] items;
+    //The number of items currently held in the array
+    private int size;
 
-    // Default constructor - set the array to size 10 by default
+    //Default Constructor - Sets the array to size 10 by default
     public ArrayManager() {
+        //Makes the items array with capacity for 10 integers
         items = new int[10];
+        //Sets the size to 0 since the array starts empty
         size = 0;
     }
 
     // Constructor with specified size
     public ArrayManager(int size) {
+        //Validates the input size
         if (size <= 0) {
-            size = 10; // default if invalid
+            // default if invalid (0 or negative), then makes it a default of 10
+            size = 10;
         }
+        //Creates the items  array with the default/specified capacity
         items = new int[size];
+        //Initializes the size to 0 (array starts out empty)
         this.size = 0;
     }
 
-    // Accepts and manages an existing array
+    //Accepts and manages an existing array
     public ArrayManager(int[] items) {
+        //Assigns the provided array reference to this.items field
         this.items = items;
+        //Sets size to the length of the array
         size = items.length;
     }
 
+    //Getter for current size of array
     public int getSize() {
+        //Returns the value/size
         return size;
     }
 
-    // Returns true if the array is empty
+    //Checks if the array is empty
     public boolean isEmpty() {
+        //Returns true if the array is empty
         return size == 0;
     }
 
-    // Prints all elements currently stored in the array
+    //Prints all elements currently stored in the array
     public void printArray() {
+        //Firsts check if the array is empty
         if (isEmpty()) {
+            //Prints message if array is empty
             System.out.println("(Array is empty)");
             return;
         }
-
+        //Loops though from 0 to size -1
         for (int i = 0; i < size; i++) {
+            //Prints it out index of items
             System.out.println("[" + i + "]: " + items[i]);
         }
     }
 
-    // Returns a new array with only the filled elements
+    //Returns a new array with only the filled elements
     public int[] toArray() {
+        //Creates a new array with the exact size of the current number of index's
         int[] arrayToReturn = new int[size];
-
+        //Copies each from the internal array to the new array
         for (int i = 0; i < size; i++) {
             arrayToReturn[i] = items[i];
         }
+        //Returns new array contatining only the used elements
         return arrayToReturn;
     }
 
-    // Returns the element at the specified index
-    public int get(int i) throws NoItemsException {
-        if (i < 0 || i >= size) {
-            throw new NoItemsException("Could not get data. Index " + i + " is out of bounds for array of size " + size);
+    //Returns the element at the specified index
+    public int get(int index) throws NoItemsException {
+        //Validates if the index is within range (0 to size -0)
+        if (index < 0 || index >= size) {
+            //if the index is invalid, shows a message
+            throw new NoItemsException("Could not get data. Index " + index + " is out of bounds for array of size " + size);
         }
-        return items[i];
+        //Returns elements at the valid index position
+        return items[index];
     }
 
-    // Replaces the data array with a larger array that keeps all the same data
+    //Replaces the data array with a larger array that keeps all the same data
     private void resizeArray() {
+        //Creates a new array with capacity increasing by 10
         int[] newArray = new int[items.length + 10];
-
+        //Copies existing elements from old array to the new array
         for (int i = 0; i < items.length; i++) {
             newArray[i] = items[i];
         }
-
+        //Replaces old arreay with new larger array
         items = newArray;
     }
 
-    // Adds an item to the end of the array
+    //Adds an item to the end of the array
     public void add(int newItem) {
         // Check if array is full and resize if needed
         if (size == items.length) {
             resizeArray();
         }
 
-        // Add item to array
+        //Add item to array
         items[size] = newItem;
-        size++; // increase count
+        //increase count
+        size++;
     }
 
-    // Removes the item at the specified index
+    //Removes the item at the specified index
     public void remove(int index) {
+        //Validates index
         if (index < 0 || index >= size) {
+            //Prints message if invalid
             System.out.println("Invalid index: " + index);
             return;
         }
 
         // Shift all elements left by one
         for (int i = index; i < size - 1; i++) {
+            //Moves each element one positon to the left
             items[i] = items[i + 1];
         }
-
-        size--; // decrease count
+        //Decrease count
+        size--;
     }
 
-    // Adds an item at the specified index
+    //Adds an item at the specified index
     public void addAt(int newItem, int index) {
         if (index < 0 || index > size) {
             System.out.println("Invalid index: " + index);
@@ -127,12 +153,14 @@ public class ArrayManager {
         for (int i = size; i > index; i--) {
             items[i] = items[i - 1];
         }
-
+        //Insert new itam at specified index
         items[index] = newItem;
-        size++; // increase count
+        //increase count
+        size++;
     }
 
-    // Main method for quick testing
+    ///////////////////////////////
+    //Main method for quick testing
     public static void main(String[] args) {
         ArrayManager am = new ArrayManager();
 

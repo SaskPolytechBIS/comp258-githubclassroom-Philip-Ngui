@@ -10,10 +10,12 @@ package arraymanager;
  */
 public class NoItemsException extends Exception {
 
+    //Generic message
     public NoItemsException() {
         super("There are no items to perform this operation");
     }
 
+    //Accepts a custom error message
     public NoItemsException(String errorMessage) {
         super(errorMessage);
     }
